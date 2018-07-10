@@ -1,7 +1,5 @@
 import { Request } from 'express';
-import { TableCron } from '../utils/tableManagement';
 import { TypeDefinition, checkType } from '../utils/utilFunctions';
-import { User } from './database';
 
 export interface FilterView {
     // pagination: {size: number; page: number; total: number};
@@ -323,10 +321,6 @@ export function isSearchCriteria(elem: any): elem is SearchCriteria {
 export interface Error {
     code: number;
     message: string;
-}
-
-export interface CustomRequest extends Request {
-    user?: User;
 }
 
 export interface EmailContent {

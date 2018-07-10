@@ -47,27 +47,6 @@ function insertData() {
     }, (err: Error) => {
         console.error(err);
     });
-
-    oasp4fn.insert('UserRole', mock.UserRole).then((res: string) => {
-        console.log('\nAll User roles inserted');
-        console.log(res);
-    }, (err: Error) => {
-        console.error(err);
-    });
-
-    oasp4fn.insert('User', mock.User).then((res: string) => {
-        console.log('\nAll Users inserted');
-        console.log(res);
-    }, (err: Error) => {
-        console.error(err);
-    });
-
-    oasp4fn.insert('Table', mock.Table).then((res: string) => {
-        console.log('\nAll tables inserted');
-        console.log(res);
-    }, (err: Error) => {
-        console.error(err);
-    });
 }
 
 insertData();
