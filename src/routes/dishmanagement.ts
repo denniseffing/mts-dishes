@@ -15,7 +15,7 @@ router.post('/dish/search', (req: Request, res: Response) => {
         business.checkFilter(req.body);
 
         // get the dishes
-        business.getDishes(req.body, (err: types.Error, dishes: types.PaginatedList) => {
+        business.getDishes(req.body, (err: types.Error | null, dishes: types.PaginatedList | undefined) => {
             if (err) {
                 res.status(500).json({ message: err.message });
             } else {
