@@ -322,20 +322,3 @@ export interface Error {
     code: number;
     message: string;
 }
-
-export interface EmailContent {
-    emailFrom?: string;
-    emailAndTokenTo?: { [index: string]: string; };
-    emailType?: number;
-    detailMenu?: string[];
-    bookingDate?: string;
-    assistants?: number;
-    bookingToken?: string;
-    price?: number;
-    buttonActionList?: {
-        [index: string]: string;
-    };
-    host?: {
-        [index: string]: string;
-    };
-}
