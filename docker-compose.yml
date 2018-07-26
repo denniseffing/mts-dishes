@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  mts-dishes:
+    image: denniseffing/mts-dishes:nightly
+    ports:
+      - "8080:8080"
+    restart: always
+    container_name: 'mts_dishes'
+    networks:
+      - dishes
+  mts-dishes-dynamo:
+    image: dwmkerr/dynamodb:latest
+    command: ["-dbPath", "/data", "-sharedDb"]
+    volumes:
+      - dynamo_data:/data
+    restart: always
+    container_name: 'mts_dishes_dynamo'
+    networks:
+      - dishes
+networks:
+  dishes:
+    driver: bridge
+volumes:
+  dynamo_data:
