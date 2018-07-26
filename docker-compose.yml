@@ -18,6 +18,11 @@ services:
     container_name: 'mts_dishes_dynamo'
     networks:
       - dishes
+  mts-dishes-dynamo-init:
+    image: denniseffing/mts-dishes-dynamo-init:nightly
+    container_name: 'mts_dishes_dynamo_init'
+    networks:
+      - dishes
 networks:
   dishes:
     driver: bridge
