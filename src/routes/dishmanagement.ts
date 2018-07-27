@@ -1,5 +1,6 @@
 import { Request, Response, Router as eRouter } from 'express';
 import * as business from '../logic';
+import * as dbtypes from '../model/database';
 import * as types from '../model/interfaces';
 
 export const router = eRouter();
@@ -21,6 +22,32 @@ router.post('/dish/search', (req: Request, res: Response) => {
             } else {
                 res.json(dishes);
             }
+        });
+    } catch (error) {
+        res.status(error.code || 500).json({ message: error.message });
+    }
+});
+
+router.get('/dish/:id', (req: Request, res: Response) => {
+    try {
+        // get dish
+        business.getDish(req.params.id).then((dish: dbtypes.Dish) => {
+            res.json(dish);
+        }).catch(err => {
+            res.status(500).json({ message: err.message });
+        });
+    } catch (error) {
+        res.status(error.code || 500).json({ message: error.message });
+    }
+});
+
+router.get('/ingredient/:ids', (req: Request, res: Response) => {
+    try {
+        // get dish
+        business.getIngredients(req.params.ids).then((ingredients: dbtypes.Ingredient[]) => {
+            res.json(ingredients);
+        }).catch(err => {
+            res.status(500).json({ message: err.message });
         });
     } catch (error) {
         res.status(error.code || 500).json({ message: error.message });

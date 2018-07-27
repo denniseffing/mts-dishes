@@ -30,7 +30,7 @@ if (!process.env.MODE || process.env.MODE!.trim() !== 'test') {
 
 const maxPrice = 50;
 
-//! /////////////////// Dishes /////////////////////////////////////////////////////////////////////////////////////////
+/* #region Get dishes by criteria */
 export async function getDishes(
   filter: types.FilterView,
   callback: (err: types.Error | null, dishes?: types.PaginatedList) => void,
@@ -62,10 +62,10 @@ export async function getDishes(
     }
 
     // if no dish was found for the
-    if (dishIdSet && dishIdSet.size === 0) {  
+    if (dishIdSet && dishIdSet.size === 0) {
       callback(null, util.getPagination(0, 1, []));
       return;
-    }  
+    }
 
     // get dishes from database
     const ingredients: dbtypes.Ingredient[] = (await oasp4fn
@@ -102,7 +102,32 @@ export async function getDishes(
     callback({ code: 500, message: error.message });
   }
 }
+/* #endregion */
 
+/* #region Get dish by id */
+export async function getDish(id: number): Promise<dbtypes.Dish> {
+  const dish = (await oasp4fn
+    .table('Dish')
+    .where('id', id, '=')
+    .first()
+    .promise()) as Promise<dbtypes.Dish>;
+  return dish;
+}
+/* #endregion */
+
+/* #region Get ingredients by ids */
+export async function getIngredients(
+  ids: number[],
+): Promise<dbtypes.Ingredient[]> {
+  const ingredients = (await oasp4fn
+    .table('Ingredient')
+    .filter((ingredient: dbtypes.Ingredient) =>
+      ids.includes(Number(ingredient.id)),
+    )
+    .promise()) as Promise<dbtypes.Ingredient[]>;
+  return ingredients;
+}
+/* #endregion */
 //! /////////////////// BOOKING /////////////////////////////////////////////////////////////////////////////////////////
 
 //! //////////// AUX FUNCTIONS //////////////////////////////////////////////////////////////////
