@@ -31,8 +31,8 @@ router.post('/dish/search', (req: Request, res: Response) => {
 router.get('/dish/:id', (req: Request, res: Response) => {
     try {
         // get dish
-        business.getDish(req.params.id).then((dish: dbtypes.Dish) => {
-            res.json(dish);
+        business.getDish(req.params.id).then((dish: any) => {
+            res.json(dish[0]);
         }).catch(err => {
             res.status(500).json({ message: err.message });
         });

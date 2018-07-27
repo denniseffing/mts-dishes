@@ -105,12 +105,12 @@ export async function getDishes(
 /* #endregion */
 
 /* #region Get dish by id */
-export async function getDish(id: number): Promise<dbtypes.Dish> {
+export async function getDish(id: number): Promise<any> {
   const dish = (await oasp4fn
     .table('Dish')
     .where('id', id, '=')
-    .first()
-    .promise()) as Promise<dbtypes.Dish>;
+    .first(1)
+    .promise()) as Promise<any>;
   return dish;
 }
 /* #endregion */
