@@ -36,7 +36,7 @@ app.use('/images', express.static('public/images'));
 /**
  * API routes
  */
-app.use('/mythaistar/services/rest/dishmanagement/v1', dishes.router);
+app.use('/v1', dishes.router);
 
 // error handler
 app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
