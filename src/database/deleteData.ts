@@ -23,13 +23,13 @@ function deleteData() {
         dynamodb = new DynamoDB({ endpoint: databaseURL, region: 'us-west-2', credentials: creds });
     }
 
-    dynamodb.listTables().eachPage((err, data) => {
+    dynamodb.listTables().eachPage((err: any, data: any) => {
         if (err) {
             console.error(err); // an error occurred
             return false;
         } else if (data && data.TableNames) {
-            data.TableNames.forEach((name) => {
-                oasp4fn.table(name).map((elem: { id: string }) => elem.id).promise().then((res: string[]) => {
+            data.TableNames.forEach((name: any) => {
+                oasp4fn.table(name).map((elem: any) => elem.id).promise().then((res: any) => {
                     let cp = [...res];
                     while (cp.length > 0) {
                         if (cp.length <= 25) {
@@ -45,12 +45,12 @@ function deleteData() {
                             cp = _.slice(cp, 25, cp.length);
                             oasp4fn.delete(name, n).promise().then((res2) => {
                                 console.log('Data from table ' + name + ' has been deleted');
-                            }, (err2) => {
+                            }, (err2: any) => {
                                 console.error(err2);
                             });
                         }
                     }
-                }, (err2) => {
+                }, (err2: any) => {
                     console.error(err2);
                 });
             });
