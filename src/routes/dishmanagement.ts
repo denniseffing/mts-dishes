@@ -31,11 +31,8 @@ router.post('/dish/search', (req: Request, res: Response) => {
 router.get('/dish/:id', (req: Request, res: Response) => {
     try {
         // get dish
-        business.getDish(req.params.id).then((dish: any) => {
-            res.json(dish[0]);
-        }).catch(err => {
-            res.status(500).json({ message: err.message });
-        });
+        let dish = business.getDish(req.params.id);
+        res.json(dish);
     } catch (error) {
         res.status(error.code || 500).json({ message: error.message });
     }
@@ -43,12 +40,9 @@ router.get('/dish/:id', (req: Request, res: Response) => {
 
 router.get('/ingredient/:ids', (req: Request, res: Response) => {
     try {
-        // get dish
-        business.getIngredients(req.params.ids).then((ingredients: dbtypes.Ingredient[]) => {
-            res.json(ingredients);
-        }).catch(err => {
-            res.status(500).json({ message: err.message });
-        });
+        // get ingredients
+        let ingredients = business.getIngredients(req.params.ids);
+        res.json(ingredients);
     } catch (error) {
         res.status(error.code || 500).json({ message: error.message });
     }
