@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@godaddy/terminus@^2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@godaddy/terminus/-/terminus-2.4.2.tgz#d97ebb3a04fc2577b7aec602c6853f00b92febc2"
+  dependencies:
+    es6-promisify "^6.0.0"
+    stoppable "^1.0.5"
+
 "@oasp/oasp4fn@^0.6.3":
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/@oasp/oasp4fn/-/oasp4fn-0.6.3.tgz#f0e004f17042bd3d3b5c9064644ea08e60fec45e"
@@ -694,6 +701,10 @@ ee-first@1.1.1:
 encodeurl@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
+
+es6-promisify@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/es6-promisify/-/es6-promisify-6.0.0.tgz#b526a75eaa5ca600e960bf3d5ad98c40d75c7203"
 
 escape-html@~1.0.3:
   version "1.0.3"
@@ -2085,6 +2096,10 @@ static-extend@^0.1.1:
 statuses@~1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.4.0.tgz#bb73d446da2796106efcc1b601a253d6c46bd087"
+
+stoppable@^1.0.5:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/stoppable/-/stoppable-1.0.6.tgz#21f7f933f884f64947c5ad3eb6dd7413cb4531ca"
 
 stream-combiner@~0.0.4:
   version "0.0.4"
