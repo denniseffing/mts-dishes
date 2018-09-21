@@ -6,7 +6,13 @@ import * as types from '../model/interfaces';
 export const router = eRouter();
 
 router.post('/dish/search', (req: Request, res: Response) => {
+    const random = Math.random();
+
     try {
+        if (random <= 0.33) {
+            throw { code: 502, message: 'Oops, I made an oopsiieee wooopsiee'}
+        }
+
         // Check if body contains a valid filter
         if (!types.isFilterView(req.body)) {
             throw { code: 400, message: 'Invalid filter' };
@@ -29,7 +35,13 @@ router.post('/dish/search', (req: Request, res: Response) => {
 });
 
 router.get('/dish/:id', (req: Request, res: Response) => {
+    const random = Math.random();
+
     try {
+        if (random <= 0.33) {
+            throw { code: 502, message: 'Oops, I made an oopsiieee wooopsiee'}
+        }
+
         // get dish
         let dish = business.getDish(req.params.id);
         res.json(dish);
@@ -39,7 +51,13 @@ router.get('/dish/:id', (req: Request, res: Response) => {
 });
 
 router.get('/ingredient/:ids', (req: Request, res: Response) => {
+    const random = Math.random();
+
     try {
+        if (random <= 0.33) {
+            throw { code: 502, message: 'Oops, I made an oopsiieee wooopsiee'}
+        }
+
         // get ingredients
         let ingredients = business.getIngredients(req.params.ids);
         res.json(ingredients);
